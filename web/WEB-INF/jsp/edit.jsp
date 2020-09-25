@@ -27,7 +27,7 @@
                             <div class="form-group col-lg-6 col-md-4 col-sm-12">
                                 <label for="nombre" class="form-label">Nombre</label>
                                 <div>
-                                    <input name="nombre" type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre completo" value="${list[0].nombre}">
+                                    <input  name="nombre" type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre completo" value="${list[0].nombre}">
                                 </div>
                             </div>
                             <div class="form-group col-lg-6 col-md-4 col-sm-12">

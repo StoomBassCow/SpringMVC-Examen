@@ -15,7 +15,7 @@
         <title>Edit page</title>
     </head>
     <body>
-        <div class="container mt-4">
+        <div class="container mt-4 text-white">
             <div class="card">
                 <div class="card-header bg-info text-light">
                     <h4>Editar registro de ${list[0].nombre}</h4>
@@ -45,7 +45,7 @@
                             <div class="form-group col-lg-6 col-md-4 col-sm-12">
                                 <label for="edad" class="form-label">Edad</label>
                                 <div>
-                                    <input name="edad" type="text" class="form-control" id="edad" placeholder=""  disabled value="${list[0].edad}">
+                                    <input name="edad" type="text" class="form-control" id="edad" placeholder=""  readonly value="${list[0].edad}">
                                 </div>
                             </div>
                             <div class="form-group col-lg-6 col-md-4 col-sm-12">
@@ -70,6 +70,8 @@
                 </div>
             </div>
         </div>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
@@ -77,21 +79,26 @@
 
         <script>
 
-            var phone = document.getElementById("telefono");
-            var maskOptions = {
-                mask: '(000)000-00-00'
-            };
-            var mask = IMask(phone, maskOptions);
+                                var phone = document.getElementById("telefono");
+                                var maskOptions = {
+                                    mask: '(000)000-00-00'
+                                };
+                                var mask = IMask(phone, maskOptions);
+
+
+
+
         </script>
 
 
 
-        
+
 
 
 
         <script>
             function calcular_edad() {
+
                 var birth_date = new Date(document.getElementById("nacimiento").value);
                 var birth_date_day = birth_date.getDate();
                 var birth_date_month = birth_date.getMonth();
@@ -117,33 +124,44 @@
                 var output_value = calculated_age;
                 document.getElementById("edad").value = calculated_age;
 
+
             }
         </script>
-        
-       <script>
+
+        <script>
             function validar() {
 
-                var nombre, curp, nacimiento, edad, correo, telefono, expresion;
+                var nombre, curp, nacimiento, edad, correo, telefono, correoExpresion;
                 nombre = document.getElementById("nombre").value;
                 curp = document.getElementById("curp").value;
                 nacimiento = document.getElementById("nacimiento").value;
                 edad = document.getElementById("edad").value;
                 correo = document.getElementById("correo").value;
                 telefono = document.getElementById("telefono").value;
-                expresion = /\w+@\w+\.+[a-z]/;
+                correoExpresion = /\w+@\w+\.+[a-z]/;
+                curpExpresion = /\w/;
 
                 if (nombre === "" || nombre === null || curp === "" || nacimiento === "" || edad === "" || correo === "" || telefono === "") {
+                    swal("Faltan campos por llenar", "Todos los campos son obligatorios", "error")
 
-                    alert("Todos los campos son obligatorios");
                     return false;
                 } else if (nombre.length > 100) {
-                    alert("El nombre es muy grande");
+                    swal("El nombre es demasiado largo", "El nombre es muy grande", "error");
                     return false;
                 } else if (curp.length > 18 || curp.length < 18) {
-                    alert("El CURP debe contener 18 digitos, revisalo nuevamente");
+                    swal("La longitud de tu CURP es incorrecta", "El CURP debe contener 18 digitos, revisalo nuevamente", "error");
                     return false;
-                } else if (!expresion.test(correo)) {
-                    alert("El correo que ingresaste no es valido");
+                } else if (!curpExpresion.test(correo)) {
+                    swal("El CURP que ingresaste no es valido", "error");
+                    return false;
+                } else if (!correoExpresion.test(correo)) {
+                    swal("El correo que ingresaste no es valido", "error");
+                    return false;
+                } else if (nacimiento.length > 10 || nacimiento.length < 10) {
+                    swal("Error en la fecha", "La fecha no coincide, recuerda usar el formato dd-MM-yyyy", "error");
+                    return false;
+                } else if (edad < 0) {
+                    swal("Error al ingresar la fecha", "No puedes tener una edad negativa", "error");
                     return false;
                 }
             }

@@ -9,6 +9,8 @@
 <!DOCTYPE html>
 <html>
     <head> <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css" integrity="sha384-H4X+4tKc7b8s4GoMrylmy2ssQYpDHoqzPa9aKXbDwPoPUA3Ra8PA5dGzijN+ePnH" crossorigin="anonymous">
+        <script src="https://unpkg.com/imask"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Edit page</title>
     </head>
@@ -35,9 +37,9 @@
                                 </div>
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                                <label for="nacimiento" class="form-label">Fecha de nacimiento</label>
                                 <div>
-                                    <input name="nacimiento" type="text" class="form-control" id="fechaNacimiento" placeholder="Mascara de fecha" value="${list[0].nacimiento}">
+                                    <input name="nacimiento" type="date" class="form-control" id="nacimiento" onchange="calcular_edad()" placeholder="Mascara de fecha" value="${list[0].nacimiento}">
                                 </div>
                             </div>
                             <div class="form-group col-lg-6">
@@ -61,7 +63,7 @@
 
                         </div>
                         <div class="d-flex justify-content-around">
-                            <input type="submit" class="btn btn-success btn-lg" value="Actualizar">
+                            <input type="submit" onclick="return validar();" class="btn btn-success btn-lg" value="Actualizar">
                             <a href="index.htm" class="btn btn-info btn-lg">Regresar</a>
                         </div>
                     </form>

@@ -71,18 +71,23 @@
             </div>
         </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
 
 
         <script>
 
-                                var phone = document.getElementById("telefono");
-                                var maskOptions = {
-                                    mask: '(000)000-00-00'
-                                };
-                                var mask = IMask(phone, maskOptions);
+            var phone = document.getElementById("telefono");
+            var maskOptions = {
+                mask: '(000)000-00-00'
+            };
+            var mask = IMask(phone, maskOptions);
         </script>
+
+
+
+        
 
 
 
@@ -98,7 +103,7 @@
                 var today_month = today_date.getMonth();
                 var today_year = today_date.getFullYear();
 
-           
+                var calculated_age = 0;
 
                 if (today_month > birth_date_month)
                     calculated_age = today_year - birth_date_year;
@@ -109,16 +114,14 @@
                         calculated_age = today_year - birth_date_year - 1;
                 } else
                     calculated_age = today_year - birth_date_year - 1;
-            }
 
-            document.getElementById("edad").value = calculated_age;
+                var output_value = calculated_age;
+                document.getElementById("edad").value = calculated_age;
 
             }
         </script>
-
-
-
-        <script>
+        
+       <script>
             function validar() {
 
                 var nombre, curp, nacimiento, edad, correo, telefono, expresion;
@@ -146,6 +149,5 @@
                 }
             }
         </script>
-
     </body>
 </html>

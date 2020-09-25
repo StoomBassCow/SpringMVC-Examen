@@ -17,44 +17,44 @@
     <body>
         <div class="container mt-4">
             <div class="card">
-                <div class="card-header bg-info">
-                    <h4>Nuevo registro</h4>
+                <div class="card-header bg-info text-light">
+                    <h4>Editar registro de ${list[0].nombre}</h4>
                 </div>
                 <div class="card-body">
                     <form method="POST" >
 
                         <div class="row">
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-6 col-md-4 col-sm-12">
                                 <label for="nombre" class="form-label">Nombre</label>
                                 <div>
                                     <input name="nombre" type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre completo" value="${list[0].nombre}">
                                 </div>
                             </div>
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-6 col-md-4 col-sm-12">
                                 <label for="curp" class="form-label">CURP</label>
                                 <div>
                                     <input name="curp" type="text" class="form-control" id="curp" placeholder="Masrcara de curp" value="${list[0].curp}">
                                 </div>
                             </div>
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-6 col-md-4 col-sm-12">
                                 <label for="nacimiento" class="form-label">Fecha de nacimiento</label>
                                 <div>
                                     <input name="nacimiento" type="date" class="form-control" id="nacimiento" onchange="calcular_edad()" placeholder="Mascara de fecha" value="${list[0].nacimiento}">
                                 </div>
                             </div>
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-6 col-md-4 col-sm-12">
                                 <label for="edad" class="form-label">Edad</label>
                                 <div>
                                     <input name="edad" type="text" class="form-control" id="edad" placeholder=""  disabled value="${list[0].edad}">
                                 </div>
                             </div>
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-6 col-md-4 col-sm-12">
                                 <label for="correo" class="form-label">Correo</label>
                                 <div>
                                     <input name="correo" type="text" class="form-control" id="correo" placeholder="Mascara de correo" value="${list[0].correo}">
                                 </div>
                             </div>
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-6 col-md-4 col-sm-12">
                                 <label for="telefono" class="form-label">Numero de telefono</label>
                                 <div>
                                     <input name="telefono" type="text" class="form-control" id="telefono" placeholder="Mascara de telefono" value="${list[0].telefono}">
@@ -71,6 +71,7 @@
             </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
 
 
@@ -82,6 +83,10 @@
             };
             var mask = IMask(phone, maskOptions);
         </script>
+
+
+
+        
 
 
 
@@ -114,10 +119,8 @@
 
             }
         </script>
-
-
-
-        <script>
+        
+       <script>
             function validar() {
 
                 var nombre, curp, nacimiento, edad, correo, telefono, expresion;
